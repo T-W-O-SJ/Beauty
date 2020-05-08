@@ -26,6 +26,10 @@ CREATE TABLE user_roles
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
+CREATE TABLE images (
+    user_id INTEGER NOT NULL
+    id INTEGER PRIMARY KEY nextval('')
+    CONSTRAIN
 CREATE TABLE entities (
   id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   user_id     INTEGER   NOT NULL,
