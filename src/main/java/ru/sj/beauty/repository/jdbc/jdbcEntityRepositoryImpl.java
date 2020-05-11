@@ -12,7 +12,7 @@ import ru.sj.beauty.model.Product;
 import ru.sj.beauty.repository.ProductRepository;
 
 import java.util.List;
-@Repository
+
 public class jdbcEntityRepositoryImpl implements ProductRepository {
     private final JdbcTemplate template;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;

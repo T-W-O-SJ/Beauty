@@ -1,9 +1,10 @@
 package ru.sj.beauty.model;
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
+@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 @NotBlank
 @Size(min = 3 , max = 100)

@@ -8,14 +8,15 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
-@Entity
+@javax.persistence.Entity
 @Table( name = "users",uniqueConstraints = @UniqueConstraint(name = "users_unique_email_idx", columnNames = "email"))
 
 @NamedQueries(
         {
-                @NamedQuery(name = User.DELETE ,query ="delete from User u where u.id =:id" ),
-                @NamedQuery(name = User.GetByEmail , query = "select from User u Left Join Fetch u.roles  where u.email=?1"),
-                @NamedQuery(name = User.GetSorted, query = "select from  User u Left Join Fetch u.roles where u.name,u.email")
+                @NamedQuery(name = User.DELETE ,query ="DELETE FROM User u WHERE u.id =:id" ),
+                @NamedQuery(name = User.GetByEmail , query = "SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.email=?1"),
+                @NamedQuery(name = User.GetSorted, query = "SELECT u FROM User u LEFT JOIN FETCH u.roles ORDER BY u.name,u.email"),
+
         }
 )
 public class User extends AbstractNamedEntity {
@@ -27,15 +28,14 @@ public class User extends AbstractNamedEntity {
 @Email
     @Size(max=100)
     private String email;
-   @Column(name = "password",unique = false,nullable = false)
+   @Column(name = "password", nullable = false)
 @NotNull
    @Size(min =6 , max = 12)
     private String password;
+   @Column(name= "phone", nullable = false, unique = false)
 @NotBlank
-@Size( min = 11, max = 11)
-@Column(name= "phone", nullable = false, unique = true)
-
-    private  String phone;
+@Size( min = 5, max = 11)
+private  String phone;
 @Column(name ="enabled",nullable = false,unique = false,columnDefinition = "bool default true")
 @NotNull
     private boolean enabled = true;
@@ -49,11 +49,19 @@ public class User extends AbstractNamedEntity {
 @ElementCollection(fetch = FetchType.EAGER)
         private Set<Role> roles;
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public User() {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.phone, u.isEnabled(), u.getRegistered(), u.getRoles());
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getPhone(), u.isEnabled(), u.getRegistered(), u.getRoles());
     }
 
 

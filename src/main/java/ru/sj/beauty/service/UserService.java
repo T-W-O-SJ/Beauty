@@ -14,6 +14,7 @@ import static  ru.sj.beauty.util.ValidationUtil.checkNotFoundWithId;
 public class UserService {
     private  final UserRepository repository;
 @Autowired
+
     public UserService(UserRepository repository) {
         this.repository = repository;
     }

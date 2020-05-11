@@ -1,5 +1,6 @@
 package ru.sj.beauty.repository.jpa;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,18 +12,17 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 @Repository
 @Transactional(readOnly = true)
-public class UserRepositoryJpaImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager em;
     @Override
     @Transactional
-    public User save(User user) {
-        if(user.isNew()){
+    public User save( User user) {
+        if (user.isNew()) {
             em.persist(user);
             return user;
-        }
-        else{
-            return em.merge(user);
+        } else {
+            return em.merge(user)       ;
         }
 
     }

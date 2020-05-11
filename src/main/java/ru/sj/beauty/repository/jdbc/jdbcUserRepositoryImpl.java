@@ -11,7 +11,6 @@ import ru.sj.beauty.model.User;
 import ru.sj.beauty.repository.UserRepository;
 
 import java.util.List;
-@Repository
 public class jdbcUserRepositoryImpl implements UserRepository {
 private final JdbcTemplate jdbcTemplate;
 private  final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
