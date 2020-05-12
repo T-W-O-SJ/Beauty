@@ -9,7 +9,6 @@ ru\sj\beauty\repository\jpa\ProductRepositoryImpl.class
 ru\sj\beauty\repository\jdbc\jdbcUserRepositoryImpl.class
 ru\sj\beauty\model\Role.class
 ru\sj\beauty\repository\UserRepository.class
-ru\sj\beauty\repository\jpa\UserRepositoryJpaImpl.class
 ru\sj\beauty\web\user\AdminRestController.class
 ru\sj\beauty\util\ValidationUtil.class
 ru\sj\beauty\util\exception\NotFoundException.class
