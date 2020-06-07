@@ -15,7 +15,7 @@
     <!-- Not necessary, already included with component-scan -->
     <!--<context:annotation-config/>-->
 
-    <context:component-scan base-package="ru.sj.**.repository.jpa"/>
+
     <context:component-scan base-package="ru.sj.**.model"/>
     <context:component-scan base-package="ru.sj.**.service"/>
 

@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS user_roles;
-DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS products CASCADE;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS images;
 DROP SEQUENCE IF EXISTS global_seq;
@@ -29,11 +29,9 @@ CREATE TABLE user_roles
 
 CREATE TABLE products (
   id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-  user_id     INTEGER   NOT NULL,
   time        INTEGER  NOT NULL,
   description TEXT      NOT NULL,
-  price    INTEGER       NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+  price    INTEGER       NOT NULL
 );
 CREATE UNIQUE INDEX entities_unique_user_id_idx
   ON products (id);

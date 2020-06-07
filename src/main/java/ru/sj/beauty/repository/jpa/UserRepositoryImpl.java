@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 @Repository
-@Transactional(readOnly = true)
+@Transactional(readOnly = true )
 public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager em;
