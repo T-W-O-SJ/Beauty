@@ -11,7 +11,7 @@ public interface ProductRepository {
     boolean delete(int id);
     Product get (int id);
     List<Product>getAll();
-    Set<Image> getProductImage(int id);
+    List<Image> getProductImageList(int id);
    Product saveImage(int id ,Image image);
     }
 

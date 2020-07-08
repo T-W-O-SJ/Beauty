@@ -9,10 +9,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@NamedQueries(
-        @NamedQuery(name = Product.DELETE, "DELETE FROM Product p WHERE m.id=:id "),
-        @NamedQuery(name = Product.GetSorted,"SELECT FROM Product p id")
-
+@NamedQueries({
+        @NamedQuery(name = Product.DELETE, query = "DELETE FROM Product p WHERE p.id=:id "),
+        @NamedQuery(name = Product.GetSorted, query = "SELECT p FROM Product p WHERE p.id=:id "),
+        @NamedQuery(name = Product.GetImage, query = "SELECT im FROM Image im WHERE im.product.id=:id "),
+}
 )
 
 @Table(name = "products",uniqueConstraints = @UniqueConstraint(name = "entities_unique_user_id_idx",columnNames ="id"))

@@ -37,7 +37,7 @@ CREATE UNIQUE INDEX entities_unique_user_id_idx
   ON products (id);
 
 CREATE TABLE images (
-                        id INTEGER PRIMARY KEY NOT NULL ,
+                        id INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
                         product_id INTEGER NOT NULL ,
                         image Text NOT NULL,
                         CONSTRAINT image_id_idx UNIQUE (id),

@@ -1,5 +1,6 @@
 package ru.sj.beauty.repository.jpa;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sj.beauty.model.Image;
 import ru.sj.beauty.model.Product;
@@ -9,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Set;
-
+@Repository
 @Transactional(readOnly = true)
 public class ProductRepositoryImpl implements ProductRepository {
     @PersistenceContext
@@ -17,7 +18,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product saveImage(int id, Image image) {
-       em.merge();
+       Product product = (em.find(Product.class,id));
+       product.getImages().add(image);
+       return em.merge(product);
     }
 
     @Override
@@ -39,21 +42,18 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product get(int id) {
-        return em.createNamedQuery(Product.GetSorted.);
+        return em.find(Product.class,id);
     }
 
     @Override
     public List<Product> getAll() {
-        return null;
+        return em.createNamedQuery(Product.GetSorted,Product.class).getResultList();
     }
 
     @Override
-    public Set<Image> getProductImage(int id) {
-        return null;
+    public List <Image> getProductImageList(int id) {
+        return em.createNamedQuery(Product.GetImage,Image.class).setParameter("id",id).getResultList();
     }
 
-    @Override
-    public Set<Image> getProducImage(int id) {
-        return null;
-    }
+
 }
