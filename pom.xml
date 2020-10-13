@@ -27,7 +27,7 @@
     <!--DB-->
     <postgresql.version>42.2.8</postgresql.version>
     <!--tests-->
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
     <!--hibernate-->
     <hibernate.version>5.4.7.Final</hibernate.version>
     <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
